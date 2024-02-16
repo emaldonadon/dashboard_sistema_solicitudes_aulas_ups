@@ -5,6 +5,7 @@ import { SolicitudesSoportesEspera } from './SolicitudesSoportesEspera';
 import { SolicitudesSoportesAprobadas } from './SolicitudesSoportesAprobadas';
 import { SolicitudesSoportesCanceladas } from './SolicitudesSoportesCanceladas';
 import { SolicitudesSoportesRechazadas } from './SolicitudesSoportesRechazadas';
+import { SolicitudesSoportesEnProceso } from './SolicitudesSoportesEnProceso';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,21 +55,25 @@ export const SolicitudesSoportePage = () => {
           </Box>
           <Tabs value={tab} onChange={handleChange} aria-label="solicitud de servicio">
             <Tab label="EN ESPERA" {...tabs(0)} />
-            <Tab label="COMPLETADAS" {...tabs(1)} />
-            <Tab label="CANCELADAS" {...tabs(2)} />
-            <Tab label="RECHAZADAS" {...tabs(3)} />
+            <Tab label="EN PROCESO" {...tabs(1)} />
+            <Tab label="COMPLETADAS" {...tabs(2)} />
+            <Tab label="CANCELADAS" {...tabs(3)} />
+            <Tab label="RECHAZADAS" {...tabs(4)} />
             {/* <Tab label="Crear Usuario" {...tabs(1)} /> */}
           </Tabs>
           <TabPanel value={tab} index={0}>
             <SolicitudesSoportesEspera />
           </TabPanel>
           <TabPanel value={tab} index={1}>
-            <SolicitudesSoportesAprobadas />
+            <SolicitudesSoportesEnProceso />
           </TabPanel>
           <TabPanel value={tab} index={2}>
-            <SolicitudesSoportesCanceladas />
+            <SolicitudesSoportesAprobadas />
           </TabPanel>
           <TabPanel value={tab} index={3}>
+            <SolicitudesSoportesCanceladas />
+          </TabPanel>
+          <TabPanel value={tab} index={4}>
             <SolicitudesSoportesRechazadas />
           </TabPanel>
         </CardContent>

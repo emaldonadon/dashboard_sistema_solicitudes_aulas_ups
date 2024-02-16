@@ -25,6 +25,7 @@ import {
     esES,
     CustomExportButton
 } from '@mui/x-data-grid';
+import { DeleteSede } from "./DeleteSede";
 
 export const ListaSedes = () => {
     const userAuth = useSelector(state => state.userAuth)
@@ -124,6 +125,12 @@ export const ListaSedes = () => {
             field: 'created', headerName: 'FECHA DE CREACION', type: 'dateTime', width: 180,
             valueGetter: ({ value }) => value && moment(new Date(value.seconds * 1000).toISOString()).format('DD/MM/YYYY'),
         },
+        {
+            field: '', headerName: 'ELIMINAR', width: 120,
+            renderCell: (params) => {
+                return <DeleteSede props={params.row} />
+            }
+        },
     ];
 
     const csvOptions = { delimiter: ';' };
@@ -211,9 +218,9 @@ export const ListaSedes = () => {
 
     return (
         <>
-        <Box px={2}>
-        <p style={{ marginBottom: "10px", marginTop: "0px" }}><strong>LISTA DE SEDES</strong></p>
-        </Box>
+            <Box px={2}>
+                <p style={{ marginBottom: "10px", marginTop: "0px" }}><strong>LISTA DE SEDES</strong></p>
+            </Box>
             <Box px={2}>
                 <Paper>
                     <Box sx={{ height: 600, width: '100%' }}>

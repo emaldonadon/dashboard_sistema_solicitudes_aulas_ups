@@ -32,6 +32,7 @@ import {
     esES,
     CustomExportButton
 } from '@mui/x-data-grid';
+import { DeleteEdificio } from "./DeleteEdificio";
 
 export const ListaEdificios = () => {
 
@@ -171,6 +172,12 @@ export const ListaEdificios = () => {
         {
             field: 'created', headerName: 'FECHA DE CREACION', type: 'dateTime', width: 180,
             valueGetter: ({ value }) => value && moment(new Date(value.seconds * 1000).toISOString()).format('DD/MM/YYYY'),
+        },
+        {
+            field: '', headerName: 'ELIMINAR', width: 120,
+            renderCell: (params) => {
+                return <DeleteEdificio props={params.row} />
+            }
         },
     ];
 

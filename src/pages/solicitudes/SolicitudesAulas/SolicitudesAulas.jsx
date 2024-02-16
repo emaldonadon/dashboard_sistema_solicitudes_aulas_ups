@@ -5,6 +5,7 @@ import { SolicitudesAulasEspera } from './SolicitudesAulasEspera';
 import { SolicitudesAulasAprobadas } from './SolicitudesAulasAprobadas';
 import { SolicitudesAulasCanceladas } from './SolicitudesAulasCanceladas';
 import { SolicitudesAulasRechazadas } from './SolicitudesAulasRechazadas';
+import { SolicitudesAulasCompletadas } from './SolicitudesAulasCompletadas';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,8 +56,9 @@ export const SolicitudesAulas = () => {
                     <Tabs value={tab} onChange={handleChange} aria-label="solicitud de servicio">
                         <Tab label="EN ESPERA" {...tabs(0)} />
                         <Tab label="APROBADAS" {...tabs(1)} />
-                        <Tab label="CANCELADAS" {...tabs(2)} />
-                        <Tab label="RECHAZADAS" {...tabs(3)} />
+                        <Tab label="COMPLETADAS" {...tabs(2)} />
+                        <Tab label="CANCELADAS" {...tabs(3)} />
+                        <Tab label="RECHAZADAS" {...tabs(4)} />
                         {/* <Tab label="Crear Usuario" {...tabs(1)} /> */}
                     </Tabs>
                     <TabPanel value={tab} index={0}>
@@ -66,9 +68,12 @@ export const SolicitudesAulas = () => {
                         <SolicitudesAulasAprobadas />
                     </TabPanel>
                     <TabPanel value={tab} index={2}>
-                        <SolicitudesAulasCanceladas />
+                        <SolicitudesAulasCompletadas />
                     </TabPanel>
                     <TabPanel value={tab} index={3}>
+                        <SolicitudesAulasCanceladas />
+                    </TabPanel>
+                    <TabPanel value={tab} index={4}>
                         <SolicitudesAulasRechazadas />
                     </TabPanel>
                 </CardContent>

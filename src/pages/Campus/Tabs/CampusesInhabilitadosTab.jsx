@@ -17,6 +17,7 @@ import {
     esES,
 } from '@mui/x-data-grid';
 import { ActivarCampusButton } from "../ButtonsActions/ActivarCampusButton";
+import { DeleteCampus } from "../DeleteCampus";
 
 export const CampusesInhabilitadosTab = ({ sede }) => {
 
@@ -82,6 +83,12 @@ export const CampusesInhabilitadosTab = ({ sede }) => {
             field: '2', headerName: 'INHABILITAR', width: 120,
             renderCell: (params) => {
                 return <ActivarCampusButton props={params.row} />
+            }
+        },
+        {
+            field: '', headerName: 'ELIMINAR', width: 120,
+            renderCell: (params) => {
+                return <DeleteCampus props={params.row} />
             }
         },
     ];
